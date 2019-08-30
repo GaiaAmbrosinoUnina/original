@@ -4,6 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -q
 RUN apt-get install -qy npm curl iperf ssh htop
 RUN npm config set registry https://registry.npmjs.org/
+RUN npm config set strict-ssl false
 
 RUN command -v node >/dev/null 2>&1 || { ln -s /usr/bin/nodejs /usr/bin/node; }
 
