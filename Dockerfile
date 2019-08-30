@@ -1,10 +1,9 @@
 FROM ubuntu:14.04
-
+ENV DEBIAN_FRONTEND noninteractive
 # install node and some other items
 RUN apt-get update -q
 RUN apt-get install -qy npm curl iperf ssh htop
 RUN command -v node >/dev/null 2>&1 || { ln -s /usr/bin/nodejs /usr/bin/node; }
-RUN export DEBIAN_FRONTEND=noninteractive
 
 # the node dependencies for our node server app
 # using caching suggestions per http://bitjudo.com/blog/2014/03/13/building-efficient-dockerfiles-node-dot-js/
