@@ -2,13 +2,7 @@ FROM ubuntu:16.04
 ENV DEBIAN_FRONTEND noninteractive
 # install node and some other items
 RUN apt-get update -q
-RUN apt-get install -qy npm curl iperf ssh htop
-RUN npm config get proxy
-RUN npm config get https-proxy
-RUN npm config set strict-ssl false
-RUN npm config set registry https://registry.npmjs.org/
-
-
+RUN apt-get install -qy npm curl iperf ssh htop apt-utils
 RUN command -v node >/dev/null 2>&1 || { ln -s /usr/bin/nodejs /usr/bin/node; }
 
 # the node dependencies for our node server app
