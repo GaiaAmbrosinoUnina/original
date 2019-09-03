@@ -1,5 +1,4 @@
 FROM ubuntu:16.04
-ENV DEBIAN_FRONTEND noninteractive
 # install node and some other items
 RUN apt-get update -q
 
@@ -20,4 +19,7 @@ RUN cp -r /tmp/node_modules /server/.
 
 # expose port 80 for the node server
 EXPOSE 80 5001
+RUN chmod -R 777 /usr/
+RUN chmod +x /usr/local/sbin/simple-container-benchmarks-init
+RUN chmod +x /usr/local/sbin/simple-container-benchmarks
 CMD ["/usr/local/sbin/simple-container-benchmarks-init"]
